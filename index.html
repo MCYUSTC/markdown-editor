@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="css/editor.css" />
+    <title>Editor</title>
+    <style type="text/css">
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #eee;
+      }
+      .editor-wrapper {
+        max-width: 680px;
+        margin: 60px auto;
+        background-color: white;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-wrapper">
+      <input class="title" type="text" placeholder="Title" />
+      <textarea id="editor" placeholder="Content here ....">
+## This is the editor for markdown
+
+Support the following feature: 
+
+* Syntax highlight
+* Upload image on Paste.
+
+      </textarea>
+    </div>
+  
+    <script src="js/zepto.min.js"></script>
+    <script src="js/marked.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/inline-attach.js"></script>
+    <script src="js/codemirror.inline-attach.js"></script>
+    <script type="text/javascript">
+    (function($) {
+      
+      editor = new Editor();
+      editor.render();
+      inlineAttach.attachToCodeMirror(editor.codemirror, {
+         uploadUrl: 'upload_attachment.php'
+      });
+
+    })(Zepto);
+    </script>
+  </body>
+</html>
